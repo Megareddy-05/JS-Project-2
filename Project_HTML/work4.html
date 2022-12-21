@@ -386,29 +386,265 @@
             return no(node);
           } 
         </pre><br>
-        <p>And we get these results:<br>
+        <p>And we get these results:<br><br>
         
-            Entering solvable(Root)
-            |   Entering solvable(A)
-            |   |  Entering solvable(c)
-            |   |  | Entering solvable(null)
-            |   |  | solvable(null) returns false
-            |   |  |  Entering solvable(null)
-            |   |  |  solvable(null) returns false
-            |   solvable(c) returns false
-            |   Entering solvable(D)
-            |       Entering solvable(null)
-            |    Entering
-            |        
+            Entering solvable(Root)<br>
+            |   Entering solvable(A)<br>
+            |   |  Entering solvable(c)<br>
+            |   |  | Entering solvable(null)<br>
+            |   |  | solvable(null) returns false<br>
+            |   |  | Entering solvable(null)<br>
+            |   |  | solvable(null) returns false<br>
+            |   |  solvable(c) returns false<br>
+            |   |  Entering solvable(D)<br>
+            |   |  | Entering solvable(null)<br>
+            |   |  | solvable(null) returns false<br>
+            |   |  | Entering solvable(null)<br>
+            |   |  | solvable(null) returns false<br>
+            |   |  solvable(D) returns false<br>
+            |    solvable(A) returns false<br>
+            |    Entering solvable(B)<br>
+            |   |   Entering solvable(E)<br>
+            |   |   solvable(E) returns true<br>
+            |    solvable(B) returns true<br>
+            solvable(Root) returns true<br>
+            true  <br>  
 
             
 
-        </p>
+        </p><br>
+        <h4><b>Trick #3: Never discard your debugging statements.</b></h4><br>
+        <p>Writing debugging statements is programming,too. Often it's as much work to debug the debugging statements as it is to debug
+            the actual program. Once your program is working, why throw this code away?
+        </p><br>
+        <p>The simple solution is to make your debugging statement conditional. For example,</p><br>
+        <pre style="color: blue;">
+        static final boolean debugging = false;
+
+        static void enter(BinaryTree node){
+            if (debugging){
+                System.out.println(indent + "Entering solvable(" + name(node) + ")");
+                indent = indent + "| ";
+            }
+        }
 
 
+        static boolean yes(BinaryTree node){
+            if (debugging){
+                indent = indent.substring(3);
+                System.out.println(indent + "solvable(" + name(node) + ") returns true");
+            }
+            return true;
+        }
 
 
+        static boolean no(BinaryTree node){
+            if (debugging){
+                indent = indent.substring(3);
+                System.out.println(indent + "solvable(" + name(node) + ") returns false");
+            }
+            return false;
+        }
+        </pre>
+        <br>
+        <h4><b>Trick #4: Create an Exception.</b></h4><br>
+        <p>If an Exception is thrown, you can get information about just where it happened by sending it the message 
+            printStackTrace(PrintStream). Since an Exception is an object like any other, you can create and throw your own Exceptions. </p><br>
+            <pre style="color: blue;">
+            new Exception("Checkpoint Charlie").printStackTrace(System.out);
+        </pre><br>
+        <p>will print out a message something like this, and the program will then continue normally. That is, the above code just acts like a 
+            print statement.
+        </p><br>
+        <pre style="color: blue;">
+        java.lang.Exception: Checkpoint Charlie
+
+           at TreeSearch.solvable(TreeSearch.java:53)
+           at TreeSearch.solvable(TreeSearch.java:57)
+           at TreeSearch.main(TreeSearch.java:72)
+           at__SHELL38.run(__SHELL38.java:16)
+           at bluej.runtime.ExecServer.suspendExecution(Unknown Source)
+        </pre><br>
+        <hr>
+        <h4><b>Example: Cindy's Puzzle</b></h4><br>
+        <p>I call the following puzzle "cindy's puzzle" for historical reasons. You have some number n of black marbles and the same number
+            of white marbles, and you have a playing board which consists simply of a line 2n+1 dpaces to put the marbles in. start with the
+            black marbles all at the one end, the white marbles all at the other end, and a free space in between.
+        </p><br>
+        <table border="1px" align="center" cellpadding="5" cellspacing="0">
+            <tr>
+                <td style="background-color:grey"><img src="black-ball.png" alt=""></td>
+                <td style="background-color:grey"><img src="black-ball.png" alt=""></td>
+                <td width="40" style="background-color:grey"></td>
+                <td style="background-color:grey"><img src="white-ball.png" alt=""></td>
+                <td style="background-color:grey"><img src="white-ball.png" alt=""></td>
+            </tr>
+        </table><br>
+        <p>The goal is to reverse the positions of the marbles:</p><br>
+        <table style="background-color: grey;" border="1px" align="center" cellpadding="5" cellspacing="0">
+            <tr>
+                <td><img src="white-ball.png" alt=""></td>
+                <td><img src="white-ball.png" alt=""></td>
+                <td width="40"></td>
+                <td><img src="black-ball.png" alt=""></td>
+                <td><img src="black-ball.png" alt=""></td>
+            </tr>
+        </table><br>
+        <p><b>The black marbles can only move to the right, and the white marbles can only move to the left. At each move, a marbles
+            can either:
+        </b></p><br>
+        <ul type="disc">
+            <li>Move one space ahead, if that space is clear, or</li>
+            <li>Jump ahead over exactly one marble of the opposite color, if the space just beyond that marble is clear.</li>
+        </ul><br>
+        <p>For example, you could make the following sequence of moves:</p>
+        <center>
+        <table>
+            <tr>
+                <th><b>Starting position:</b></th>
+                <td>
+                 
+                <table style="background-color: grey;" border="1px" cellpadding="5" cellspacing="0">
+                <tr>
+                    <td><img src="black-ball.png" alt=""></td>
+                    <td><img src="black-ball.png" alt=""></td>
+                    <td width="40"></td>
+                    <td><img src="white-ball.png" alt=""></td>
+                    <td><img src="white-ball.png" alt=""></td>
+                </tr>
+                </table>
+                </td>
+            </tr><br>
+            <tr>
+                <th><b>Black moves ahead:</b></th>
+                <td>
+                
+                    <table style="background-color: grey;" border="1px" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td width="40"></td>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                    </tr>
+                    </table>
+                    </td>
+            </tr><br>
+            <tr>
+                <th><b>White jumps:</b></th>
+                <td>
+                <table style="background-color: grey;" border="1px" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td width="40"></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                    </tr>
+                    </table>
+                </td>
+            </tr><br>
+            <tr>
+                <th><b>Black moves ahead:</b></th>
+                <td>
+                <table style="background-color: grey;" border="1px" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                        <td width="40"></td>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                    </tr>
+                    </table>
+                </td>
+            </tr><br>
+            <tr>
+                <th><b>Black jumps:</b></th>
+                <td>
+                <table style="background-color: grey;" border="1px" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td width="40"></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                    </tr>
+                    </table>
+                </td>
+            </tr><br>
+            <tr>
+                <th><b>White moves ahead:</b></th>
+                <td>
+                <table style="background-color: grey;" border="1px" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td width="40"></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td><img src="black-ball.png" alt=""></td>
+                        <td><img src="white-ball.png" alt=""></td>
+                    </tr>
+                    </table>
+                </td>
+            </tr><br>
+            <tr>
+                <th><b>Stuck!</b></th>
+            </tr>
 
 
+        </table>
+    </center>
+    <br>
+    <p>The backtracking method is named solvable and return a boolean. In solvable we shall need to check whether we are at a leaf, which
+        in this case means a position from which no further moves are possible. This isn't so easy.
+    </p>
+    <p>Now to the program. The main program will intialize the board, and call a recursive backtracking routine to attempt to solve the 
+        puzzle. The backtracking routine will either succedd and print out a winning path, or it will fail and the main program will have to
+        print out bad news.
+    </p>
+    <p>The backtracking method is named solvable and return a boolean. In solvable we shall need to check whether we are at a leaf, which
+        in this case means a position from which no further moves are possible. This isn't so easy.</p>
+    <p><b>Now we have a simpler ordering of moves to use in our program. Just check, in order, the 2n+1 spaces of the board. For each
+        space, either zero or one moves is possible. With this understanding, we can write a boolean method canMove(int[] board,int position)
+        which determines whether a move is possible from the given position:
+    </b></p>    <br>
+    <ul type="disc">
+        <li>If the position is empty, no move is possible;</li>
+        <li>If the position contains a black marble, the method checks for a move or jump to the right; </li>
+        <li>If the position contains a white marble, the method checks for a move or jump to the left.</li>
+    </ul><br>
+    <p>Along with <b>canMove and makemove,</b> we are using methods <b>puzzleSolved and PrintBoard</b> with meanings that should be obvious.
+    </p><br>
+    <pre style="color: blue;">
+        boolean solvable(int[] board){}
+            if(puzzleSolved(board)){
+                return true;
+            }
+        }
+    </pre>
+    <p>Along with canMoveand makeMove, we re using methods puzzleSolved and printBoard with meanings that should be obvious.</p><br>
+    <p>Here is some output from the program:</p><br>
+    <ol type="1" reversed>
+        <li><strong>WHITE WHITE WHITE _____ BLACK BLACK BLACK</strong></li>
+        <li><strong>WHITE WHITE WHITE BLACK _____  BLACK BLACK</strong></li>
+        <li><strong>WHITE WHITE _____ BLACK WHITE BLACK BLACK</strong></li>
+        <li><strong>WHITE WHITE WHITE _____ BLACK BLACK BLACK</strong></li>
+        <li><strong>WHITE BLACK WHITE _____ WHITE BLACK BLACK</strong></li>
+        <li><strong>WHITE WHITE WHITE BLACK BLACK WHITE _____</strong></li>
+        <li><strong>_____ WHITE BLACK WHITE BLACK BLACK BLACK</strong></li>
+        <li><strong>WHITE WHITE WHITE _____ BLACK BLACK BLACK</strong></li>
+        <li><strong>WHITE WHITE BLACK WHITE BLACK _____ BLACK</strong></li>
+        <li><strong>WHITE BLACK WHITE WHITE _____ BLACK BLACK</strong></li>
+        <li><strong>BLACK WHITE WHITE _____ BLACK WHITE BLACK</strong></li>
+        <li><strong>WHITE WHITE WHITE _____ BLACK BLACK BLACK</strong></li>
+        <li><strong>BLACK WHITE BLACK WHITE WHITE _____ BLACK</strong></li>
+        <li><strong>WHITE BLACK WHITE BLACK WHITE BLACK _____</strong></li>
+        <li><strong>WHITE WHITE WHITE _____ BLACK BLACK BLACK</strong></li>
+        <li><strong>_____ WHITE BLACK WHITE BLACK WHITE BLACK</strong></li>
+    </ol><br>
+    <pre style="background-color: grey;" border-radius: 2px; border: 2px;>
+    Notice that the solutions is given in reverse order: BLACK starts out on the left and WHITE on the right, as in the last line. I've
+    added line numbers to the actual output in order to emphasize this point. Backtracking always produces its results in reverse order; 
+    it is up to you, the programmer, to reverse the results again to get them in the correct order.
+    </pre>
 </body>
 </html>
