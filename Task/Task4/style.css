@@ -1,0 +1,17 @@
+body{
+    background-image: url("clearsky.jfif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 16px;
+}
+.links a{
+    margin: 0 10px;
+}
+header img{
+    border-radius: 50%;
+}

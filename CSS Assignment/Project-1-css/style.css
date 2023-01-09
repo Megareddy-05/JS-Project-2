@@ -1,0 +1,23 @@
+body{
+    border: 2px solid grey;
+    background-color: lightgray;
+}
+
+.heading{
+    background-color: white;
+    margin-top: 0px;
+}
+.text{
+    color: lightskyblue;
+}
+.page1{
+    background-color: white;
+}
+.sub1{
+    border: 2px solid white;
+    width: 200px;
+    height: 200px;
+}
+.p1{
+    text-decoration: line-through;
+}
