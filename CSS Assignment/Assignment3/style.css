@@ -1,6 +1,7 @@
 body{
     background-color: grey;
     background-size: cover;
+    position: relative;
 }
 .box1{
     border: 8px solid tomato;
@@ -121,17 +122,16 @@ body{
     right: 0;
     left: 0;
 }
-
 .box6{
     border: 8px solid tomato;
     background-color: greenyellow;
     color: maroon;
     position: fixed;
-    width: 400px;
     height: 50px;
+    width: 400px;
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    margin: auto;
-    
+    gap: 120px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    margin-left: 500px;
 }

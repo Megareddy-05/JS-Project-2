@@ -111,12 +111,14 @@ body{
 
 .subpage{
     background-color: white;
-    border: 2px solid white;
+    border: 2px solid black;
     width: 400px;
     height: 200px;
     border-radius: 10px;
     margin-left: 300px;
     margin-top: -260px;
+    position: absolute;
+    bottom: 400px;
 }
 .text11{
     background-color: lightgray;
@@ -138,6 +140,7 @@ body{
 
 .page2{
     filter: blur(1px);
+    position: relative;
 }
 
 .heading3{
@@ -175,14 +178,33 @@ body{
 
 .parentclass4{
     filter: blur(1px);
+    position: relative;
 }
-.sub4{
+.subpage4{
     background-color: white;
-    border: 2px solid white;
+    border: 2px solid black;
     width: 400px;
     height: 200px;
     border-radius: 10px;
     margin-left: 300px;
     margin-top: -260px;
-
+    position: absolute;
+    bottom: 300px;
+}
+.text444{
+    background-color: lightgray;
+    padding: 5px;
+    margin: 10px;
+}
+.text44{
+    margin-left: 250px;
+}
+.text4444{
+    border: 2px solid #00A5EC;
+    background-color: #00A5EC;
+    width: 100px;
+    padding: 5px;
+    margin-left: 270px;
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
