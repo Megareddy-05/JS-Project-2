@@ -40,7 +40,7 @@ body{
     color: gray;
 }
 
-.child2{
+/* .child2{
     border: 2px solid white;
     height: 250px;
     width: 250px;
@@ -48,13 +48,13 @@ body{
     background-color: white;
     margin-top: 20px;
     padding-left: 10px;
-}
+} */
 .text4{
     text-decoration: line-through;
     color: gray;
 }
 
-.child3{
+/* .child3{
     border: 2px solid white;
     height: 250px;
     width: 250px;
@@ -63,13 +63,13 @@ body{
     margin-top: 20px;
     padding-left: 10px;
     margin-right: 30px;
-}
+} */
 .text6{
     text-decoration: line-through;
     color: gray;
 }
 
-.child4{
+/* .child4{
     border: 2px solid white;
     height: 150px;
     width: 250px;
@@ -80,13 +80,13 @@ body{
     position: absolute;
     left: 65px;
     top: 300px;
-}
+} */
 .text8{
     text-decoration: line-through;
     color: gray;
 }
 
-.child5{
+/* .child5{
     border: 2px solid white;
     height: 150px;
     width: 250px;
@@ -97,7 +97,7 @@ body{
     position: absolute;
     left: 370px;
     top: 300px;
-}
+} */
 .text10{
     text-decoration: line-through;
     color: gray;
@@ -208,4 +208,18 @@ body{
     margin-left: 270px;
     margin-bottom: 20px;
     border-radius: 5px;
+}
+
+@media screen and (min-width:250px) and (max-width:600px) 
+{
+    .parent{
+ grid-template-columns: 200px;
+ 
+ } 
+
+.child1{
+    height: 200px;
+    
+}
+    
 }

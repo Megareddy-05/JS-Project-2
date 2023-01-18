@@ -1,0 +1,29 @@
+.child1{
+    border: 2px solid red;
+    background-color: cyan;
+    width: 300px;
+    height: 300px;
+}
+.child2{
+    border: 2px solid red;
+    background-color: cyan;
+    width: 300px;
+    height: 300px;
+}
+.child3{
+    border: 2px solid red;
+    background-color: cyan;
+    width: 300px;
+    height: 300px;
+}
+.child4{
+    border: 2px solid red;
+    background-color: cyan;
+    width: 300px;
+    height: 300px;
+}
+.parent{
+    display: flex;
+    margin: 10px;
+    gap: 10px;
+}
