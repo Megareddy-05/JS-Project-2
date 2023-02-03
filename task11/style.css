@@ -1,29 +1,24 @@
-.child1{
-    border: 2px solid red;
-    background-color: cyan;
-    width: 300px;
-    height: 300px;
+/* .container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 30px 30px 30px;
+    grid-gap: 5px;
 }
-.child2{
-    border: 2px solid red;
-    background-color: cyan;
-    width: 300px;
-    height: 300px;
-}
-.child3{
-    border: 2px solid red;
-    background-color: cyan;
-    width: 300px;
-    height: 300px;
-}
-.child4{
-    border: 2px solid red;
-    background-color: cyan;
-    width: 300px;
-    height: 300px;
-}
+.child{
+    background-color: aqua;
+    color: black;
+    text-align: center;
+    justify-content: center;
+} */
+
+
 .parent{
-    display: flex;
-    margin: 10px;
-    gap: 10px;
+    border: 2px solid green;
+    background-color: green;
+    width: 100px;
+    height: 100px;
+    transition: width 2s;
+}
+.parent:hover{
+    width: 300px;
 }

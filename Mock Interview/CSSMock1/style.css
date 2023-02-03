@@ -1,0 +1,43 @@
+.box{
+    border: 2px solid green;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    text-align: center;
+    transition: width 2s;
+}
+.box:hover{
+    width: 300px;
+}
+
+.card{
+    border: 2px solid tomato;
+    height: 200px;
+    width: 200px;
+    background-color: tomato;
+    text-align: center;
+}
+
+.parent{
+    display: flex;
+    gap: 5px;
+}
+
+@media screen and (min-width:250px) and (max-width:300px) { 
+    .card{
+        border: 2px solid tomato;
+        height: 200px;
+        width: 200px;
+        background-color: tomato;
+        text-align: center;
+    }
+
+    .parent{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    div > p{
+        color: red;
+    }
+}
