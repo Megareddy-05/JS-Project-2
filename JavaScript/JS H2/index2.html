@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Handson2</title>
+</head>
+<body>
+    <h1>DECISION MAKING</h1>
+    <br>
+    <div class="prob">
+        <div class="text"><p>Question 1:Calculator</p><br>
+        const Calculator = (A, B, C) => 
+        {<br>
+        switch(A)<br>
+        {<br>
+        case "+": return B + C;<br>
+        case "-": return B - C;<br>
+        case "*": return B * C;<br>
+        case "/": return B / C;<br>
+    
+       }
+    
+       };
+        </div><br>
+        <div class="text"><p>Question 2:Check whether the condition is fulfilled or not?</p><br>
+              const Check_divisibility = (N) => {<br>
+              if ((N%6===0) && (N%9===0))<br>
+              {<br>
+              return "Divisible by both"
+              }<br>
+              else {<br>
+              return "Not Divisible by both";<br>
+              }
+    
+              };
+            
+            
+        </div><br>
+        <div class="text"><p>Question 3:Eligible Voter</p><br>
+        
+          const isEligible = (a) => {<br>
+          if(a>=18)
+          {<br>
+          return "Eligible for Voting";
+          }<br>
+          else {<br>
+          return "Not Eligible for Voting";<br>
+          }
+          };
+        </div><br>
+        <div class="text"><p>Question 4:Find Relation</p><br>
+        
+          const findRelation = (x,y) => {<br>
+          if(x<y)<br>
+          {
+          return x + " is smaller than " + y;
+          }<br>
+          else if (x>y){<br>
+          return x + " is greater  than " + y;
+          }<br>
+          else{<br>
+          return x + " is equal to " + y;<br>
+          }
+    
+          };
+              
+        </div><br>
+        <div class="text"><p>Qurstion 5:Find Grades</p><br>
+        
+          const findGrades = (a) => {<br>
+          if(a<=10)
+          {<br>
+          return 'E';
+          }<br>
+          else if(a>=11 && a<=20){<br>
+          return 'D';
+          }<br>
+          else if(a>=22 && a<=30){<br>
+          return 'C';
+          }<br>
+          else if(a>=31 && a<=40){<br>
+          return 'B';
+          }<br>
+          else{<br>
+          return 'A';<br>
+          }
+          };
+        </div><br>
+        <div class="text"><p>Question 6:Get Value</p><br>
+        
+          const getValue = (a) => {<br>
+          if(a=="P" || a=="p")
+          {<br>
+           return "prepBytes";
+          }<br>
+           else if(a=="Z" || a=="z"){<br>
+           return "Zenith";
+           }<br>
+           else if(a=="E" || a=="e"){<br>
+           return "Expert Coder";
+           }<br>
+           else{<br>
+           return "Data Structure";<br>
+           }
+           };            
+        </div><br>
+        <div class="text"><p>Question 7:Find the maximum out of three numbers.</p><br>
+        
+           const Max_out_of_three = (A,B,C) =>
+            {<br>
+    
+            if(A>B  && A>C){<br>
+            return A;
+            }<br>
+            if(B>A && B>C){<br>
+            return B;
+            } <br>
+            if(C>A && C>B){<br>
+            return C;
+            }<br>
+            else {<br>
+            return -1;<br>
+            }
+            };
+        </div><br>
+        <div class="text"><p>Question 8:Second Smallest</p><br>
+        
+            const findSndSmallest = (x,y,z) =>
+            {<br>
+            if((x<y && y<z) || (y<x && y>z) )
+            {<br>
+            return y;
+            }<br>
+            else if((y<x && x<z) || (x<y && x>z))
+            {<br>
+            return x;
+            }<br>
+            else {<br>
+            return z;<br>
+            }
+    
+            };
+        </div><br>
+        <div class="text"><p>Question 9:Check whether the triangle is Acute or Obtuse</p><br>
+        
+            const Triangle_Check = (A,B,C) => 
+            {<br>
+            if( A<90 && B<90 && C<90){ <br>
+            return "acute";
+            }<br>
+            else {<br>
+            return "obtuse"<br>
+            }
+
+
+            };
+        </div>
+    </div>
+</body>
+</html>
