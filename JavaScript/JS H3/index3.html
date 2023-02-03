@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Handson3</title>
+</head>
+<body>
+    <h1>Iteration Statement</h1>
+
+    <div class="prob">
+        <div class="text"><p>Question 1:Find the number of digits
+        </p><br>
+        
+const Find_Digits = (N) => 
+{
+let count=0;
+while(N!=0)
+{
+    count++;
+    N=Math.floor(N/10);
+}
+return count;
+};
+            
+        </div><br>
+        <div class="text"><p>Question 2:Find theFives</p><br>
+        
+const Find_Five = (N) => 
+{
+let count=0;
+while(N!==0)
+{
+if(N%10==5){
+count++;
+    }
+N=Math.floor(N/10);
+}
+return count;
+};
+                        
+</div><br>
+        <div class="text"><p>Question 3:Find Sum</p><br>
+        
+const findSum = (n) => {
+let it, ans=0;
+for(it=1;it<=n;it++){
+    if(it%2==0){
+    ans+=it;
+    }
+}
+return ans;
+        
+    };
+        </div><br>
+        <div class="text"><p>Question 4:Find the sum of the digits of a given number.</p><br>
+    
+const Number_Sum = (N) => 
+{
+var sum=0;
+var count=0;
+while (Math.floor(N)>0)
+{
+    sum=N%10;
+    N=Math.floor(N/10);
+    count=count+sum
+}
+return count;
+};
+              
+        </div><br>
+        <div class="text"><p>Qurstion 5:Print the Odds.</p><br>
+    
+const Print_Odd = (N) => 
+{
+let i=0;
+console.log(2);
+for(i=3; i<=N; i=i+2)
+{
+    console.log(i)
+}
+};
+        </div><br>
+        <div class="text"><p>Question 6:Print thePrint the Odds.</p><br>
+        
+const Print_pattern = (N) => 
+{
+for(let r=1;r<=N;r++)
+{
+let s="";
+for(let c=1;c<=r;c++){
+s=s+"*";
+}
+console.log(s)
+}
+};          
+        </div><br>
+        <div class="text"><p>Question 7:Check whether a Number is a prime or not.</p><br>
+        
+const Prime_Check = (N) => 
+{
+let count=0;
+if(N== 1){
+return "NO"
+}
+else{
+for(let i=2;i<=N;i++){
+if(N%i===0){
+count++;
+}
+}
+}
+if(count===1){
+return "YES"
+}
+else{
+return "NO"
+}
+};
+        </div><br>
+        <div class="text"><p>Question 8:Print Numbers</p><br>
+    
+const printNumbers = (n) => {
+let string= " ";
+while (a < n)
+{
+    a++
+    string +=a;
+}
+};
+        </div><br>
+        <div class="text"><p>Question 9:Print the Table</p><br>
+        
+const Print_Table = (N) => 
+{
+for (let i=1;i<=10;i++){
+    console.log(N+"* "+i+" = "+N*i);
+}
+};
+</div>
+    </div>
+</body>
+</html>
